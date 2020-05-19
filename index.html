@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <link href="rps.css" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rock,Paper,Scissors</title>
+    </head>
+    <body>
+        <div id = "game">
+            <h2>Press below button to Play!</h2>
+        </div>
+        <div id = "click">
+            <button onclick="game()">Play 5 rounds of rock, paper, scissors against the computer!</button>
+        </div>
+        
+        <script>
+            
+            function game(){
+                let computerScore = 0;
+                let userScore = 0;
+                for (i = 0; i < 5; i++) {
+                    let playerSelection = window.prompt(`Round ${i + 1}. Type rock, paper, or scissors to play`).toUpperCase();
+
+                    function computerPlay() {
+                        let computerTurn = ['Rock', 'Paper', 'Scissors'];
+                        return computerTurn[Math.floor(Math.random()*3)];
+                    }
+                    
+                    let computerSelection = computerPlay().toUpperCase();
+                    
+                    function playRound(playerSelection, computerSelection) {
+                        if (playerSelection === computerSelection) {
+                            alert("Tie! You and computer think alike");
+                        }
+                        else if (playerSelection === 'ROCK' && computerSelection === 'PAPER'){
+                            alert("You lose! Paper beats Rock!");
+                            computerScore++;
+                        } 
+                        else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS'){
+                            alert("You won! Rock beats Scissors!");
+                            userScore++;
+                        }
+                        else if (playerSelection === 'PAPER' && computerSelection === 'SCISSORS'){
+                            alert("You lose! Scissors cut Paper!");
+                            computerScore++;
+                        }
+                        else if (playerSelection === 'PAPER' && computerSelection === 'ROCK'){
+                            alert("You won! Paper beats Rock!");
+                            userScore++;
+                        }
+                        else if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK'){ 
+                            alert("You lose! Rock beats Scissors!");
+                            computerScore++;
+                        }
+                        else {
+                            alert("You won! Scissors cut Paper!");
+                            userScore++;
+                        }
+                    }
+                    playRound(playerSelection, computerSelection);
+                    let totalRounds = i + 1;
+                    let finalScore = 'After round ' + totalRounds + ', your score is ' + userScore + ' and the computer\'s score is ' + computerScore + '.'; 
+                    console.log(finalScore);
+                }
+                let endResults = (userScore > computerScore) ? 
+                   () => alert("You won the game! Your score is " + userScore):
+                   () => alert("You lost the game! Your score is " + userScore);
+                endResults();
+            }
+        </script>
+    </body>
+</html>
