@@ -4,69 +4,54 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rock,Paper,Scissors</title>
+        
     </head>
     <body>
-        <div id = "game">
-            <h2>Press below button to Play!</h2>
+        <div id="header">
+            <h1 id="headerTitle">Rock Paper Scissors</h1>
         </div>
-        <div id = "click">
-            <button onclick="game()">Play 5 rounds of rock, paper, scissors against the computer!</button>
+        <div id="scoreBoard">
+            <div class="scoreBoardTitle">
+                <span>YOU</span>
+                <span>AI</span>
+            </div>
+            <div class="scores">
+                <span id="player-score">0</span>
+                <span id="ai-score">0</span>
+            </div>
+        </div>   
+        <div id="playervscomp">
+            <div class="playerImage">
+                <img src="/images/rick.png" id="rickImage">
+            </div>
+            <div class="rps">
+                <button id="0" class="choice rock button">ROCK</button>
+                <button id="1" class="choice paper button">PAPER</button>
+                <button id="2" class="choice scissors button">SCISSORS</button>
+            </div>
+            <div class="popupPlayer">
+                <img src="/images/rock.png" id="p0">
+                <img src="/images/paper.png" id="p1">
+                <img src="/images/scissors.png" id="p2">
+            </div>
+            <div class="popupAI">
+                <img src="/images/rock.png" id="c0">
+                <img src="/images/paper.png" id="c1">
+                <img src="/images/scissors.png" id="c2">
+            </div>
+            <div class="rps">
+                <button id="rock" class="choice rock result">ROCK</button>
+                <button id="paper" class="choice paper result">PAPER</button>
+                <button id="scissors" class="choice scissors result">SCISSORS</button>
+            </div>
+            <div class="compImage">
+                <img src="/images/musk.png" id="muskImage">
+            </div>
         </div>
-        
-        <script>
-            
-            function game(){
-                let computerScore = 0;
-                let userScore = 0;
-                for (i = 0; i < 5; i++) {
-                    let playerSelection = window.prompt(`Round ${i + 1}. Type rock, paper, or scissors to play`).toUpperCase();
-
-                    function computerPlay() {
-                        let computerTurn = ['Rock', 'Paper', 'Scissors'];
-                        return computerTurn[Math.floor(Math.random()*3)];
-                    }
-                    
-                    let computerSelection = computerPlay().toUpperCase();
-                    
-                    function playRound(playerSelection, computerSelection) {
-                        if (playerSelection === computerSelection) {
-                            alert("Tie! You and computer think alike");
-                        }
-                        else if (playerSelection === 'ROCK' && computerSelection === 'PAPER'){
-                            alert("You lose! Paper beats Rock!");
-                            computerScore++;
-                        } 
-                        else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS'){
-                            alert("You won! Rock beats Scissors!");
-                            userScore++;
-                        }
-                        else if (playerSelection === 'PAPER' && computerSelection === 'SCISSORS'){
-                            alert("You lose! Scissors cut Paper!");
-                            computerScore++;
-                        }
-                        else if (playerSelection === 'PAPER' && computerSelection === 'ROCK'){
-                            alert("You won! Paper beats Rock!");
-                            userScore++;
-                        }
-                        else if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK'){ 
-                            alert("You lose! Rock beats Scissors!");
-                            computerScore++;
-                        }
-                        else {
-                            alert("You won! Scissors cut Paper!");
-                            userScore++;
-                        }
-                    }
-                    playRound(playerSelection, computerSelection);
-                    let totalRounds = i + 1;
-                    let finalScore = 'After round ' + totalRounds + ', your score is ' + userScore + ' and the computer\'s score is ' + computerScore + '.'; 
-                    console.log(finalScore);
-                }
-                let endResults = (userScore > computerScore) ? 
-                   () => alert("You won the game! Your score is " + userScore):
-                   () => alert("You lost the game! Your score is " + userScore);
-                endResults();
-            }
-        </script>
+        <div id="reset">
+            <button class="resetButton">Reset</button>
+        </div>
+   
     </body>
+    <script type="text/javascript" src="jsfile.js"></script>
 </html>
