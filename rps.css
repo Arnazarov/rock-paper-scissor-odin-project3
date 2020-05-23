@@ -45,21 +45,11 @@ div.scores {
 div {
     display: flex;
 }
-.rps {
+.rps, .popupPlayer, .popupAI {
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
     
-}
-.popupPlayer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-.popupAI {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
 }
 img {
     visibility: hidden;
